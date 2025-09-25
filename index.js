@@ -28,7 +28,7 @@ async function main(params) {
 //
 app.get("/",(req,res)=>{
     console.log("Home route")
-    res.send("Home route")
+    res.redirect("/list")
 })
 // ALL LISTINGS
 app.get("/list", async(req,res)=>{
