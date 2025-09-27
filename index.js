@@ -1,3 +1,4 @@
+require("dotenv").config()
 const mongoose = require("mongoose");
 const express = require("express");
 const path = require("path");
@@ -21,7 +22,7 @@ main()
  
 
 async function main(params) {
-    await mongoose.connect('mongodb://127.0.0.1:27017/WanderLust');
+    await mongoose.connect(process.env.MONGO_URL);
 }
 
 
@@ -76,6 +77,7 @@ app.delete("/list/:id", async(req,res)=>{
 })
 
 //LISTENING
-app.listen(3000,()=>{
-    console.log("Server is listening @Port 3000");
+const PORT = process.env.PORT;
+app.listen(PORT,()=>{
+    console.log(`Server is listening @Port ${PORT}`);
 }); 
