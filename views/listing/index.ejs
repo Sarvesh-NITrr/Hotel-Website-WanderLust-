@@ -5,45 +5,21 @@
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
     <% for(let listing of allListing) {%>
         <a href="/list/<%=listing._id%>" class="listing-link">
-            <div class="card" style="min-height: 20rem;">
+            <div class="card listing-card" style="min-height: 20rem;">
                 <img src="<%=listing.image%>" class="card-img-top" style="height: 20rem;" >
                 <div class="card-img-overlay"></div>
                 <div class="card-body">
                     <p class="card-text">
                         <b><%=listing.title%></b> <br>
-                        &#8377; <%=listing.price.toLocaleString("en-IN")%> / night
+                        &#8377; <%=listing.price.toLocaleString("en-IN")%> / night <br>
+                        <b><%=listing.location%> </b>
                     </p>
                 </div>
             </div>
         </a>
     <%}%>
 </div>
-<!-- <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 g-4">
-    <% for(let listing of allListing) {%>
-        <div class="col">
-            <div class="card h-100 shadow-sm">
-                <a href="/list/<%=listing._id%>">
-                    <img src="<%=listing.image%>" class="card-img-top" style="height: 15rem; object-fit: cover;">
-                </a>
-                <div class="card-body">
-                    <p class="card-text mb-0">
-                        <b><%=listing.title%></b> <br>
-                        &#8377; <%=listing.price.toLocaleString("en-IN")%> / night
-                    </p>
-                    <a href="/list/<%=listing._id%>" class="stretched-link"></a>
-                </div>
-            </div>
-        </div>
-    <% } %>
-</div> -->
 
-        
-
-    <!-- <ul>
-    <% for(let listing of allListing) {%>
-        <li><a href="/list/<%=listing._id%>"><%= listing.title %></a></li>
-        <%}%>
-    </ul> -->
 
 <a href="/list/new"><button >Add New Location</button></a>
    

@@ -1,22 +1,12 @@
-
-    <!-- <form method="POST" action="/list/<%= obj._id %>?_method=PUT">
-        <input type="text" name="title" value="<%=obj.title%>">  <br><br>
-        <input type="text" name="image" value="<%=obj.title%>" ><br><br>
-        <textarea type="text" name="description" rows="20" cols="50"> <%=obj.description%></textarea><br><br>
-        <input type="text" name="price" value="<%=obj.price%>"><br><br>
-        <input type="text" name="country" value="<%=obj.country%>"><br><br>
-        <input type="text" name="location" value="<%=obj.location%>"><br><br>
-        <button type="submit">Update</button>
-    </form> -->
-
 <% layout("layouts/boilerplate.ejs") -%>
 <div class="row">
     <div class="col-8 offset-2"><br>
         <h2>Edit Listing</h2><br>
-        <form method="POST" action="/list/<%= obj._id %>?_method=PUT">
+        <form method="POST" novalidate class="needs-validation" action="/list/<%= obj._id %>?_method=PUT">
             <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" name="title" value="<%=obj.title%>" > <br>
+            <input required type="text" class="form-control" name="title" value="<%=obj.title%>" > <br>
+            <div class="valid-feedback">Title looks Good!</div>
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Image URL</label>
@@ -24,23 +14,27 @@
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea type="text" class="form-control" name="description" > <%=obj.description%> </textarea><br>
+            <textarea required type="text" class="form-control" name="description" > <%=obj.description%> </textarea><br>
+            <div class="valid-feedback">Fill Attractive Description</div>
         </div>
-
+        
         <div class="row">
             <div class="mb-3 col-md-4">
                 <label for="price" class="form-label">Price</label>
-                <input type="text" class="form-control" name="price" value="<%=obj.price%>"><br>
+                <input required type="text" class="form-control" name="price" value="<%=obj.price%>"><br>
+                <div class="invalid-feedback">Enter valid Price</div>
             </div>
             <div class="mb-3 col-md-8">
                 <label for="country" class="form-label">Country</label>
-                <input type="text" class="form-control" name="country" value="<%=obj.country%>"><br>
+                <input required type="text" class="form-control" name="country" value="<%=obj.country%>"><br>
+                <div class="invalid-feedback">Enter valid Country</div>
             </div>
         </div>
-
+        
         <div class="mb-3">
             <label for="location" class="form-label">Location</label>
-            <input type="text" class="form-control" name="location" value="<%=obj.location%>"><br>
+            <input required type="text" class="form-control" name="location" value="<%=obj.location%>"><br>
+            <div class="invalid-feedback">Enter valid Location</div>
         </div>
         <button class="btn btn-dark edit-btn" type="submit">Update</button>
     </form> <br>
