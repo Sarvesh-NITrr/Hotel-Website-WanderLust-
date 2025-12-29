@@ -5,35 +5,35 @@
     <form method="post" action="/list" novalidate class="needs-validation">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input required type="text" class="form-control" name="title" placeholder="enter title"> <br>
+            <input required id="title" type="text" class="form-control" name="listing[title]" placeholder="enter title"> <br>
             <div class="valid-feedback">Title looks Good!</div>
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Image</label>
-            <input type="text" class="form-control" name="image" placeholder="enter image URL/LINK"><br>
+            <input type="text" id="image" class="form-control" name="listing[image]" placeholder="enter image URL/LINK"><br>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea required type="text" class="form-control" name="description" placeholder="enter description"></textarea><br>
+            <textarea required id="description" type="text" class="form-control" name="listing[description]" placeholder="enter description"></textarea><br>
             <div class="valid-feedback">Description Attracts!!</div>
         </div>
         
         <div class="row">
             <div class="mb-3 col-md-4">
                 <label for="price" class="form-label">Price</label>
-                <input required type="text" class="form-control" name="price" placeholder="enter price"><br>
+                <input required id="price" type="text" class="form-control" name="listing[price]" placeholder="enter price"><br>
                 <div class="invalid-feedback">Price should be a number</div>
             </div>
             <div class="mb-3 col-md-8">
                 <label for="country" class="form-label">Country</label>
-                <input required type="text" class="form-control" name="country" placeholder="enter country"><br>
+                <input required id="country" type="text" class="form-control" name="listing[country]" placeholder="enter country"><br>
                 <div class="invalid-feedback">Please Enter valid Country-Name</div>
             </div>
         </div>
         
         <div class="mb-3">
             <label for="location" class="form-label">Location</label>
-            <input required type="text" class="form-control" name="location" placeholder="enter location"><br>
+            <input required id="location" type="text" class="form-control" name="listing[location]" placeholder="enter location"><br>
             <div class="invalid-feedback">Please Enter location</div>
         </div>
         <button class="btn btn-dark add-btn" type="submit">Add</button>

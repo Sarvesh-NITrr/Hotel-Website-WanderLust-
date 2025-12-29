@@ -291,4 +291,12 @@ const sampleListings = [
   },
 ];
 
+const addOwner = ()=>{
+  for(list of sampleListings){
+    list.owner = '69501cd3ecafaa6fa39a622d';
+  }
+}
+
+addOwner();
+
 module.exports = {data:sampleListings};

@@ -5,35 +5,35 @@
         <form method="POST" novalidate class="needs-validation" action="/list/<%= obj._id %>?_method=PUT">
             <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input required type="text" class="form-control" name="title" value="<%=obj.title%>" > <br>
+            <input required type="text" id="title" class="form-control" name="listing[title]" value="<%=obj.title%>" > <br>
             <div class="valid-feedback">Title looks Good!</div>
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Image URL</label>
-            <input type="text" class="form-control" name="image" value="<%=obj.image%>"><br>
+            <input type="text" id="image" class="form-control" name="listing[image]" value="<%=obj.image%>"><br>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea required type="text" class="form-control" name="description" > <%=obj.description%> </textarea><br>
+            <textarea required id="description" type="text" class="form-control" name="listing[description]" > <%=obj.description%> </textarea><br>
             <div class="valid-feedback">Fill Attractive Description</div>
         </div>
         
         <div class="row">
             <div class="mb-3 col-md-4">
                 <label for="price" class="form-label">Price</label>
-                <input required type="text" class="form-control" name="price" value="<%=obj.price%>"><br>
+                <input required id="price" type="text" class="form-control" name="listing[price]" value="<%=obj.price%>"><br>
                 <div class="invalid-feedback">Enter valid Price</div>
             </div>
             <div class="mb-3 col-md-8">
                 <label for="country" class="form-label">Country</label>
-                <input required type="text" class="form-control" name="country" value="<%=obj.country%>"><br>
+                <input required type="text" id="country" class="form-control" name="listing[country]" value="<%=obj.country%>"><br>
                 <div class="invalid-feedback">Enter valid Country</div>
             </div>
         </div>
         
         <div class="mb-3">
             <label for="location" class="form-label">Location</label>
-            <input required type="text" class="form-control" name="location" value="<%=obj.location%>"><br>
+            <input required id="location" type="text" class="form-control" name="listing[location]" value="<%=obj.location%>"><br>
             <div class="invalid-feedback">Enter valid Location</div>
         </div>
         <button class="btn btn-dark edit-btn" type="submit">Update</button>

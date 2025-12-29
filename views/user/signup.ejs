@@ -1,0 +1,27 @@
+<%layout("layouts/boilerplate")%>
+<div class="row col-6 offset-3 m-4">
+    <h1>Register to WanderLust</h1>
+    <form method="post" action="/signup" novalidate class="needs-validation">
+        <div class="form-group mb-3">
+            <label for="email">Email address</label>
+            <input required type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <div class="invalid-feedback">Fill valid emailId</div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="username">Username</label>
+            <input required type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username">
+            <div class="invalid-feedback">Set a unique username</div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="password">Password</label>
+            <input required type="password" name="password" class="form-control" id="password" placeholder="Password">
+            <div class="valid-feedback">Set a strong password</div>
+        </div>
+        <div class="form-group form-check mb-3">
+            <input required type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">I agree with terms & conditions</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+</div>
