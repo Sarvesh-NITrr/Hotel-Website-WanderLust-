@@ -1,4 +1,7 @@
-// require("dotenv").config()
+// only used in dev phase not in production phase
+if(process.NODE_ENV != "production") {
+    require("dotenv").config() 
+}
 // const expressLayouts = require("express-ejs-layouts");
 // app.use(expressLayouts);
 // app.set("layout","layouts/boilerplate");
@@ -16,14 +19,14 @@ app.set("views",path.join(__dirname,"/views"));
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"/public")));
 app.engine("ejs",ejsMate);
-
+const dburl = process.env.ATLAS_DBURL
 main()
  .then((res)=>{ console.log("Connection Successful")})
  .catch((err)=>{ console.log(err)})
  
 
 async function main(params) {
-    await mongoose.connect("mongodb://127.0.0.1:27017/WanderLust");
+    await mongoose.connect('mongodb://127.0.0.1:27017/WanderLust');
 }
 
 const listingRoutes = require("./routes/listing.js");

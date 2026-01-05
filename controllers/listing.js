@@ -11,36 +11,44 @@ module.exports.addListingForm = async(req,res)=>{
 
 module.exports.showListing = async(req,res)=>{
     const {id} = req.params;
-    const prop = await Listing.findById(id)
+    const listing = await Listing.findById(id)
     .populate({
         path:"reviews",
         populate:{        // nested populate ( listing ke reviews ke author ko show karo)
             path:"author",
         }
     }).populate("owner");// only id nhi full rev obj show hoga
-    if(!prop){
+    if(!listing){
         req.flash("error","Listing doesn't exist");
         res.redirect("/list");
     }
     else
-        res.render("listing/show.ejs",{prop});
+        res.render("listing/show.ejs",{listing});
 }
 
 module.exports.editListingPage = async(req,res)=>{
     const {id} = req.params;
     const obj = await Listing.findById(id);
+    let imgPreviewUrl = obj.image.url
+    imgPreviewUrl = imgPreviewUrl.replace("/upload","/upload/h_250,w_300") // decreases img quality for preview
     if(!obj){
         req.flash("error","Listing doesn't exist");
         res.redirect("/list");
     }
     else
-        res.render("listing/edit.ejs",{obj});
+        res.render("listing/edit.ejs",{obj,imgPreviewUrl});
 }
 
 module.exports.updateListing = async(req,res)=>{
-    let {id} = req.params;
-    console.log(id);
-    await Listing.findByIdAndUpdate(id,{...req.body.listing});
+    let {id} = req.params
+    console.log(id)
+    let updatedListing = await Listing.findByIdAndUpdate(id,{...req.body.listing})
+    if(req.file){
+        let {path,filename} = req.file
+        updatedListing.image = {url:path,filename:filename}
+        updatedListing.save()
+    }
+    else console.log("Image not uploaded")
     req.flash("success","Listing Updated!")
     res.redirect(`/list/${id}`);
 }
@@ -52,8 +60,11 @@ module.exports.deleteListing = async(req,res)=>{
 }
 
 module.exports.insertNewListing = async(req,res,next)=>{
-    req.body.listing.owner = req.user._id;
-    await Listing.insertOne(req.body.listing);
+    let {path,filename} = req.file
+    req.body.listing.owner = req.user._id
+    let newListing = new Listing(req.body.listing)
+    newListing.image = {path,filename}
+    await newListing.save()
     req.flash("success","New Listing Added!")
     res.redirect("/list")
 }

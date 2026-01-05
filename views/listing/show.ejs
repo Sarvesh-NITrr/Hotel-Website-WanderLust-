@@ -2,24 +2,24 @@
 <br>
     <div class="row">
         <div class="col-8 offset-3">
-            <h3><%=prop.title%></h3>
+            <h3><%=listing.title%></h3>
         </div>
         <div class="card col-5 offset-3 show-card listing-card">
-            <img src="<%=prop.image%>" alt="listing-image" class="card-img-top show-img">
+            <img src="<%=listing.image.url%>" alt="listing-image" class="card-img-top show-img">
             <div class="card-body">
-                <p class="card-text">Owned by : <%= prop.owner.username %></p>
-                <p class="card-text"><%=prop.description%></p> 
-                <p class="card-text">&#8377; <%=prop.price.toLocaleString("en-IN")%> / night </p>
-                <p class="card-text"><%=prop.country%></p>
-                <p class="card-text"> <%=prop.location%> </p>
+                <p class="card-text">Owned by : <%= listing.owner.username %></p>
+                <p class="card-text"><%=listing.description%></p> 
+                <p class="card-text">&#8377; <%=listing.price.toLocaleString("en-IN")%> / night </p>
+                <p class="card-text"><%=listing.country%></p>
+                <p class="card-text"> <%=listing.location%> </p>
         </div>
     </div>
 </div>
 <!-- currUser exist bhi krna chahiye -->
-<% if(currUser && prop.owner.equals(currUser._id)){ %>
+<% if(currUser && listing.owner.equals(currUser._id)){ %>
     <div class="col offset-3">
-        <a href="/list/<%=prop._id%>/edit"><button class="btn btn-dark show-btn">Update</button></a>
-        <form method="POST" action="/list/<%=prop.id%>?_method=DELETE" style="display: inline-block; margin-left: 15px;">
+        <a href="/list/<%=listing._id%>/edit"><button class="btn btn-dark show-btn">Update</button></a>
+        <form method="POST" action="/list/<%=listing.id%>?_method=DELETE" style="display: inline-block; margin-left: 15px;">
             <button type="submit" class="btn btn-dark" >Delete</button>
         </form>
     </div>
@@ -29,7 +29,7 @@
     <% if(currUser){ %>
         <hr/>
         <h4>Leave a Review</h4>
-        <form method="post" novalidate class="needs-validation" action="/list/<%=prop.id%>/reviews">
+        <form method="post" novalidate class="needs-validation" action="/list/<%=listing.id%>/reviews">
             Rating : 
             <div class="mb-3 mt-3">
             <fieldset class="starability-coinFlip">
@@ -58,13 +58,13 @@
     <hr>
     <h4>All Reviews</h4>
     <div class="row">
-        <%for(review of prop.reviews){%>
+        <%for(review of listing.reviews){%>
         <div class="card col-5 ms-3 review-card mb-3">
             <div class="card-body">
                 <h6 class="card-subtitle mb-2 text-body-secondary"><%= review.author.username %></h6>
                 <p class="starability-result card-text" data-rating="<%=review.rating%>"></p>
                 <p class="card-title"><%=review.comment%></p>
-                <form method="POST" action="/list/<%=prop.id%>/reviews/<%=review._id%>?_method=DELETE">
+                <form method="POST" action="/list/<%=listing.id%>/reviews/<%=review._id%>?_method=DELETE">
                     <button type="submit" class="btn btn-primary revdelbtn">Delete</button>
                 </form>
             </div>

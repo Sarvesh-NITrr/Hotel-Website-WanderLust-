@@ -2,15 +2,15 @@
 <div class="row mt-2">
     <div class="col-8 offset-2"><br>
         <h2>Create New Listing</h2><br>
-    <form method="post" action="/list" novalidate class="needs-validation">
+    <form method="post" action="/list" novalidate class="needs-validation" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input required id="title" type="text" class="form-control" name="listing[title]" placeholder="enter title"> <br>
             <div class="valid-feedback">Title looks Good!</div>
         </div>
-        <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
-            <input type="text" id="image" class="form-control" name="listing[image]" placeholder="enter image URL/LINK"><br>
+        <div class="mb-3 col-5">
+            <label for="image" class="form-label">Upload Listing Image</label>
+            <input type="file" required id="image" class="form-control" name="listing[image]"><br>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>

@@ -2,15 +2,19 @@
 <div class="row">
     <div class="col-8 offset-2"><br>
         <h2>Edit Listing</h2><br>
-        <form method="POST" novalidate class="needs-validation" action="/list/<%= obj._id %>?_method=PUT">
+        <form method="POST" novalidate class="needs-validation" enctype="multipart/form-data" action="/list/<%= obj._id %>?_method=PUT">
             <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input required type="text" id="title" class="form-control" name="listing[title]" value="<%=obj.title%>" > <br>
             <div class="valid-feedback">Title looks Good!</div>
         </div>
         <div class="mb-3">
-            <label for="image" class="form-label">Image URL</label>
-            <input type="text" id="image" class="form-control" name="listing[image]" value="<%=obj.image%>"><br>
+            Current Listing Image <br>
+            <img src="<%=imgPreviewUrl%>" alt="">
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload New Image</label>
+            <input type="file" id="image" class="form-control" name="listing[image]"><br>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
